@@ -26,7 +26,7 @@ public class GithubRepositoryService {
     // Placeholder for crawling logic
     public void crawlRepositories() {
         List<GithubRepository> repos = findAll();
-        for (GithubRepository repo : repos) {
+        for (GithubRepository repo : repos) { 
             try {
                 String apiUrl = repo.getUrl().replace("https://github.com/", "https://api.github.com/repos/");
                 // Get default branch
