@@ -35,6 +35,7 @@ public class GithubRepositoryService {
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Accept", "application/vnd.github.v3+json");
                 int responseCode = conn.getResponseCode();
+                   System.out.println("teste222222222222");
                 if (responseCode == 200) {
                     java.io.InputStream is = conn.getInputStream();
                     String json = new String(is.readAllBytes());
@@ -42,6 +43,7 @@ public class GithubRepositoryService {
                     String defaultBranch = json.split("\"default_branch\":\"")[1].split("\"")[0];
                     // Get tree
                     getRepositoryTree(apiUrl, defaultBranch);
+                     System.out.println("testeeeee ");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
