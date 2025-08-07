@@ -1,17 +1,32 @@
 package org.b3.agents.openagent.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
+import lombok.Data;
 
 @Entity
+@Data
 public class GithubRepository {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String url;
+    @Lob
+    private String repositoryTree;
+    // Reference to RepositoryFile class
+    // Assuming a repository can have multiple files
+    // and RepositoryFile is another @Entity class
+    @Transient
+    private String defaultBranch;
 
     public GithubRepository() {}
 
@@ -20,27 +35,12 @@ public class GithubRepository {
         this.url = url;
     }
 
-    public Long getId() {
-        return id;
+    public void setDefaultBranch(String defaultBranch) {
+        this.defaultBranch = defaultBranch;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getDefaultBranch() {
+        return defaultBranch;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }
